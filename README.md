@@ -4,7 +4,7 @@ This is a simple number guessing game built using Python and Tailwind CSS. The a
 
 ## Features
 
-- User-friendly GUI built with Tailwind CSS
+- User-friendly GUI
 - Random number generation for guessing
 - Feedback on user guesses (too high, too low, correct)
 - Input field that clears feedback when clicked
@@ -16,9 +16,6 @@ number-guessing-app
 ├── src
 │   ├── main.py          # Entry point of the application
 │   ├── gui.py           # GUI setup and interaction logic
-│   ├── tailwind
-│   │   ├── tailwind.config.js  # Tailwind CSS configuration
-│   │   └── styles.css          # Custom styles for the application
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project documentation
 ```
@@ -35,8 +32,6 @@ number-guessing-app
    ```
    pip install -r requirements.txt
    ```
-
-3. Ensure you have Tailwind CSS installed. You can follow the [Tailwind CSS installation guide](https://tailwindcss.com/docs/installation) for more details.
 
 ## Usage
 
