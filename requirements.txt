@@ -1,0 +1,4 @@
+Flask
+tkinter
+tailwindcss
+python-dotenv

@@ -1,0 +1,36 @@
+/* This file must be processed with Tailwind CSS CLI or a build tool to generate valid CSS. */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the number guessing game */
+body {
+    @apply bg-gray-100 flex items-center justify-center h-screen;
+}
+
+.container {
+    @apply bg-white rounded-lg shadow-lg p-6 max-w-md w-full;
+}
+
+h1 {
+    @apply text-2xl font-bold text-center mb-4;
+}
+
+.input-field {
+    @apply border border-gray-300 rounded-lg p-2 w-full mb-4;
+}
+
+.button {
+    @apply bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600 transition;
+}
+
+.feedback {
+    @apply text-center text-lg mt-4;
+    display: none; /* Initially hidden */
+}
+
+.feedback.visible {
+    display: block; /* Show feedback when needed */
+}
