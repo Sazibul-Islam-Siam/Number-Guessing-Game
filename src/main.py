@@ -55,13 +55,13 @@ class NumberGuessingGame:
         self.attempts_label = ttk.Label(master, text="Attempts: 0", font=("Helvetica", 12), background="#eaf6fb", foreground="#888")
         self.attempts_label.pack(pady=(0, 2))
 
-        # Previous guesses section
+        # Previous guesses section (horizontal)
         prev_frame = ttk.Frame(master, style='TFrame')
         prev_frame.pack(pady=(8, 0))
         prev_label = ttk.Label(prev_frame, text="Previous guesses:", font=("Helvetica", 12, "bold"), background="#eaf6fb")
         prev_label.pack(anchor='w')
-        self.guess_listbox = Listbox(prev_frame, height=5, width=30, font=("Consolas", 12), bg="#f7fbfc", fg="#2d6cdf", borderwidth=0, highlightthickness=1, relief='flat')
-        self.guess_listbox.pack(pady=(2, 0))
+        self.guess_canvas = ttk.Frame(prev_frame, style='TFrame')
+        self.guess_canvas.pack(pady=(2, 0), fill='x')
 
         # Fun fact/motivation label
         self.fact_label = ttk.Label(master, text="", style='Fact.TLabel', wraplength=380, justify='center')
@@ -73,7 +73,9 @@ class NumberGuessingGame:
             self.attempts += 1
             self.attempts_label.config(text=f"Attempts: {self.attempts}")
             self.previous_guesses.append(guess)
-            self.guess_listbox.insert(END, guess)
+            # Add guess as a horizontal label
+            guess_label = ttk.Label(self.guess_canvas, text=str(guess), font=("Consolas", 12, "bold"), background="#d1eaff", foreground="#2d6cdf", borderwidth=2, relief='groove', padding=4)
+            guess_label.pack(side='left', padx=4, pady=2)
             if guess < self.number_to_guess:
                 self.feedback_label.config(text="Your guess is too low!", foreground="#e67e22")
                 winsound.MessageBeep(winsound.MB_ICONHAND)
@@ -98,7 +100,8 @@ class NumberGuessingGame:
         self.number_to_guess = randint(1, 100)
         self.attempts = 0
         self.previous_guesses.clear()
-        self.guess_listbox.delete(0, END)
+        for widget in self.guess_canvas.winfo_children():
+            widget.destroy()
         self.feedback_label.config(text="", foreground="#e74c3c")
         self.attempts_label.config(text="Attempts: 0")
         self.fact_label.config(text="New game started! Good luck!")
